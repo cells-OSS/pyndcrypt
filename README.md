@@ -23,4 +23,4 @@ First of all, make sure you have the file you want to decrypt in the same folder
 
 # THE HISTORY
 
-This script is a merged version of https://github.com/cells-OSS/pyncrypt and https://github.com/cells-OSS/pydcrypt. The projects pyncrypt and pydcrypt are no longer gonna get updated and possibly gonna get archived. This script will keep on receiving updates.
+This script is a merged version of https://github.com/cells-OSS/pyncrypt and https://github.com/cells-OSS/pydcrypt. The projects pyncrypt and pydcrypt are no longer going to get updated and possibly going to get archived. This script will keep on receiving updates.
