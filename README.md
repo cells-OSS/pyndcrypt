@@ -35,4 +35,4 @@ Here is a virustotal report as of 9/19/2025: https://www.virustotal.com/gui/file
 
 You can see here that only 2 vendors flag it as malicious one of which is the Windows Defender.
 I have looked into the code with VSCode without trusting the window and seems like the issue is at the 3rd line, which is "from cryptography.fernet import Fernet"
-this line just imports fernet from the library cryptography, which is an encryption algorithm/method that this script uses to encrypt/decrypt the files. Malicious actors can also use this for a ransomware. We recommend excluding this script from windows defender.
+this line just imports fernet from the library cryptography, which is an encryption algorithm/method that this script uses to encrypt/decrypt the files. Malicious actors can also use this for a ransomware. We recommend excluding this script from Windows Defender.
