@@ -14,7 +14,7 @@ print(welcomeMessage)
 
 chooseOption = input("Which option would you like to choose(1/2)?: ")
 
-if chooseOption == 1:
+if chooseOption == "1":
     while True:
         file_input = input("Which file(s) do you want to encrypt: ")
         
@@ -34,8 +34,9 @@ if chooseOption == 1:
 
         if confirmationMessage.lower() == "y":
             key = Fernet.generate_key()
+            keyName = input("The name of the key: ")
 
-            with open("decryption_key.txt", "wb") as decryption_key:
+            with open(keyName + ".txt", "wb") as decryption_key:
                 decryption_key.write(key)
 
             for file in files:
@@ -49,25 +50,31 @@ if chooseOption == 1:
         else:
             print("Encryption canceled.")
 
-            input("Press any key to restart...")
-            os.execl(sys.executable, sys.executable, *sys.argv)
+        input("Press any key to restart...")
+        os.execl(sys.executable, sys.executable, *sys.argv)
 
-if chooseOption == 2:
+if chooseOption == "2":
     while True:
+        
+        file_input = input("Which file do you want to decrypt?: ")
+        
         for file in os.listdir():
-            file_input = input("Which file do you want to decrypt?: ")
+
 
             if file_input.lower() == "back":
                 os.execl(sys.executable, sys.executable, *sys.argv)
             
             files = [f.strip() for f in file_input.split(',') if f.strip()]
-            
+
+            if file[0] == ".":
+                continue
+
             files.append(file)
             break
 
         print(files)
 
-        decryptionKey = input("Enter the name of the decryption key related to the file you want to decrypt: ")
+        decryptionKey = input("Enter the name of the decryption key: ")
 
         if decryptionKey.lower() == "back":
             os.execl(sys.executable, sys.executable, *sys.argv)
