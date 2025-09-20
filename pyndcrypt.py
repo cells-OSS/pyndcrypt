@@ -6,13 +6,14 @@ welcomeMessage = """
 ===============WELCOME===============
 1 = Encryptor
 2 = Decryptor
+3 = Settings
 
 TIP: If you want to come back to this menu at any time, just type "back"
 """
 
 print(welcomeMessage)
 
-chooseOption = input("Which option would you like to choose(1/2)?: ")
+chooseOption = input("Which option would you like to choose(1/2/3)?: ")
 
 if chooseOption == "1":
     while True:
@@ -93,5 +94,33 @@ if chooseOption == "2":
                 thefile.write(contents_decrypted)
         print("Your file has been decrypted!")
 
+        input("Press any key to restart...")
+        os.execl(sys.executable, sys.executable, *sys.argv)
+
+if chooseOption == "3":
+    settingsMenu = """
+===============SETTINGS===============
+0 = Change welcome message
+SAVE = Save changes
+BACK = Go back to main menu(UNSAVED CHANGES WILL BE LOST)
+"""
+    print(settingsMenu)
+
+    chooseSetting = input("Which setting would you like to change(0)?: ")
+
+    if chooseSetting.lower() == "back":
+        os.execl(sys.executable, sys.executable, *sys.argv)
+
+    if chooseSetting == "0":
+        new_welcomeMessage = input("New welcome message: ")
+
+    if new_welcomeMessage.lower() == "back":
+        os.execl(sys.executable, sys.executable, *sys.argv)
+
+    if chooseSetting.lower() == "save":
+        with open("welcome_message.conf", "wb") as configFile:
+            configFile.write(new_welcomeMessage.encode())
+
+        print("Changes saved successfully!")
         input("Press any key to restart...")
         os.execl(sys.executable, sys.executable, *sys.argv)
