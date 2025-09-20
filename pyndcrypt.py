@@ -2,16 +2,24 @@ import os
 import sys
 from cryptography.fernet import Fernet
 
-welcomeMessage = """
-===============WELCOME===============
-1 = Encryptor
-2 = Decryptor
-3 = Settings
+if os.path.isfile("welcome_message.conf"):
+    with open("welcome_message.conf", "rb") as configFile:
+        welcomeMessage = configFile.read().decode()
+else:
+    welcomeMessage = """
+    ===============WELCOME===============
 
-TIP: If you want to come back to this menu at any time, just type "back"
-"""
+    """
+    
+    menu = """
+    1 = Encryptor
+    2 = Decryptor
+    3 = Settings
 
-print(welcomeMessage)
+    TIP: If you want to come back to this menu at any time, just type "back"
+    """
+
+print(welcomeMessage, menu)
 
 chooseOption = input("Which option would you like to choose(1/2/3)?: ")
 
@@ -98,29 +106,32 @@ if chooseOption == "2":
         os.execl(sys.executable, sys.executable, *sys.argv)
 
 if chooseOption == "3":
-    settingsMenu = """
-===============SETTINGS===============
-0 = Change welcome message
-SAVE = Save changes
-BACK = Go back to main menu(UNSAVED CHANGES WILL BE LOST)
-"""
-    print(settingsMenu)
+    while True:
 
-    chooseSetting = input("Which setting would you like to change(0)?: ")
+        settingsMenu = """
+    ===============SETTINGS===============
 
-    if chooseSetting.lower() == "back":
-        os.execl(sys.executable, sys.executable, *sys.argv)
+    0 = Change welcome message
+    SAVE = Save changes
+    BACK = Go back to main menu(UNSAVED CHANGES WILL BE LOST)
+    """
+        print(settingsMenu)
 
-    if chooseSetting == "0":
-        new_welcomeMessage = input("New welcome message: ")
+        chooseSetting = input("Which setting would you like to change(0)?: ")
 
-    if new_welcomeMessage.lower() == "back":
-        os.execl(sys.executable, sys.executable, *sys.argv)
+        if chooseSetting.lower() == "back":
+            os.execl(sys.executable, sys.executable, *sys.argv)
 
-    if chooseSetting.lower() == "save":
-        with open("welcome_message.conf", "wb") as configFile:
-            configFile.write(new_welcomeMessage.encode())
+        if chooseSetting == "0":
+            new_welcomeMessage = input("New welcome message: ")
 
-        print("Changes saved successfully!")
-        input("Press any key to restart...")
-        os.execl(sys.executable, sys.executable, *sys.argv)
+        if new_welcomeMessage.lower() == "back":
+            os.execl(sys.executable, sys.executable, *sys.argv)
+
+        if chooseSetting.lower() == "save":
+            with open("welcome_message.conf", "wb") as configFile:
+                configFile.write(new_welcomeMessage.encode())
+
+            print("Changes saved successfully!")
+            input("Press any key to restart...")
+            os.execl(sys.executable, sys.executable, *sys.argv)
