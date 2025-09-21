@@ -11,7 +11,7 @@ else:
     ===============WELCOME===============
 
     """
-    
+
 menu = """
 1 = Encryptor
 2 = Decryptor
