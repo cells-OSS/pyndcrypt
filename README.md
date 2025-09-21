@@ -13,13 +13,17 @@ Credits to him, this script at core has the code from NetworkChuck. It's just a 
 
 # HOW TO USE?
 
------ENCRYPTION-----
+-----ENCRYPTION (option 1)-----
 
 First of all, make sure you have the file you want to encrypt in the same folder as the script. Then run the script and choose the first option. Then type the name of the file(s) you want to encrypt(put a comma between the files if you want to encrypt more than one file at a time). It will ask you if you're sure you want to encrypt the file and if answered positively there will be a .txt file created with the name of "decryption_key.txt" and if you choose to encrypt more than one file at a time they will be sharing the same decryption key. Typing "back" at any moment will take you back to the welcome message.
 
------DECRYPTION-----
+-----DECRYPTION (option 2)-----
 
 First of all, make sure you have the file you want to decrypt in the same folder as the script. Then run the script and choose the second option. Then type the name of the file(s) you want to decrypt(put a comma between the files if you want to decrypt more than one file at a time). it will ask you to put the decryption key in the same directory of the script and it will ask for the name of the decryption key (by default it's called "decryption_key"). After that it should decrypt the file(s) that you chose. Typing "back" at any moment will take you back to the welcome message.
+
+-----SETTINGS (option 3)-----
+
+Change welcome message (0) = This will allow you to change the message that pops up each time you run the script. Just choose the setting and then type in whatever you want. This will create a config file in the same directory as the script and save the setting there. Deleting this file will reset the welcome message to default.
 
 # THE HISTORY
 
