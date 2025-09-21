@@ -11,13 +11,13 @@ else:
 
     """
     
-    menu = """
-    1 = Encryptor
-    2 = Decryptor
-    3 = Settings
+menu = """
+1 = Encryptor
+2 = Decryptor
+3 = Settings
 
-    TIP: If you want to come back to this menu at any time, just type "back"
-    """
+TIP: If you want to come back to this menu at any time, just type "back"
+"""
 
 print(welcomeMessage, menu)
 
