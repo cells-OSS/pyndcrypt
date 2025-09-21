@@ -1,5 +1,6 @@
 import os
 import sys
+import subprocess
 from cryptography.fernet import Fernet
 
 if os.path.isfile("welcome_message.conf"):
@@ -28,14 +29,16 @@ if chooseOption == "1":
         file_input = input("Which file(s) do you want to encrypt: ")
 
         if file_input.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         files = [f.strip() for f in file_input.split(',') if f.strip()]
 
         for file in files:
             if not os.path.isfile(file):
                 print(f"File(s) not found: {file}")
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
         print(files)
 
@@ -61,7 +64,8 @@ if chooseOption == "1":
             print("Encryption canceled.")
 
         input("Press any key to restart...")
-        os.execl(sys.executable, sys.executable, *sys.argv)
+        subprocess.Popen([sys.executable] + sys.argv)
+        sys.exit()
 
 if chooseOption == "2":
     while True:
@@ -71,7 +75,8 @@ if chooseOption == "2":
         for file in os.listdir():
 
             if file_input.lower() == "back":
-                os.execl(sys.executable, sys.executable, *sys.argv)
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             files = [f.strip() for f in file_input.split(',') if f.strip()]
 
@@ -86,7 +91,8 @@ if chooseOption == "2":
         decryptionKey = input("Enter the name of the decryption key: ")
 
         if decryptionKey.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         with open(decryptionKey, "rb") as decryption_key:
             secretkey = decryption_key.read()
@@ -103,7 +109,8 @@ if chooseOption == "2":
         print("Your file has been decrypted!")
 
         input("Press any key to restart...")
-        os.execl(sys.executable, sys.executable, *sys.argv)
+        subprocess.Popen([sys.executable] + sys.argv)
+        sys.exit()
 
 if chooseOption == "3":
     while True:
@@ -120,13 +127,15 @@ if chooseOption == "3":
         chooseSetting = input("Which setting would you like to change(0)?: ")
 
         if chooseSetting.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         if chooseSetting == "0":
             new_welcomeMessage = input("New welcome message: ")
 
         if new_welcomeMessage.lower() == "back":
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         if chooseSetting.lower() == "save":
             with open("welcome_message.conf", "wb") as configFile:
@@ -134,4 +143,5 @@ if chooseOption == "3":
 
             print("Changes saved successfully!")
             input("Press any key to restart...")
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
