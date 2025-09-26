@@ -19,7 +19,7 @@ First of all, make sure you have the file you want to encrypt in the same folder
 
 -----DECRYPTION (option 2)-----
 
-First of all, make sure you have the file you want to decrypt in the same folder as the script. Then run the script and choose the second option. Then type the name of the file(s) you want to decrypt(put a comma between the files if you want to decrypt more than one file at a time). it will ask you to put the decryption key in the same directory of the script and it will ask for the name of the decryption key (by default it's called "decryption_key"). After that it should decrypt the file(s) that you chose. Typing "back" at any moment will take you back to the welcome message.
+First of all, make sure you have the file you want to decrypt in the same folder as the script. Then run the script and choose the second option. Then type the name of the file(s) you want to decrypt(put a comma between the files if you want to decrypt more than one file at a time). it will ask you to put the decryption key in the same directory of the script and it will ask for the name of the decryption key. After that it should decrypt the file(s) that you chose. Typing "back" at any moment will take you back to the welcome message.
 
 -----SETTINGS (option 3)-----
 
