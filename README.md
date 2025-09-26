@@ -11,6 +11,9 @@ This script has been inspired by NetworkChuck: https://www.youtube.com/watch?v=U
 
 Credits to him, this script at core has the code from NetworkChuck. It's just a fun project I wanted to try, he on his video made a "ransomware", but i decided to take the code and make it a encryption/decryption script.
 
+# PREREQUISITES
+Python (https://www.python.org/)
+
 # HOW TO USE?
 
 -----ENCRYPTION (option 1)-----
@@ -28,9 +31,6 @@ Change welcome message (0) = This will allow you to change the message that pops
 # THE HISTORY
 
 This script is a merged version of https://github.com/cells-OSS/pyncrypt and https://github.com/cells-OSS/pydcrypt. The projects pyncrypt and pydcrypt are no longer going to get updated and possibly going to get archived. This script will keep on receiving updates.
-
-# PREREQUISITES
-python (https://www.python.org/)
 
 cryptography (Windows = pip install cryptography, MacOS/Linux = pip3 install cryptography)
 
