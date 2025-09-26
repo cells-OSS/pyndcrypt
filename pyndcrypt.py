@@ -17,7 +17,7 @@ if os.path.exists("figlet.conf"):
         figlet_config = figlet_configFile.read().decode()
         if figlet_config == "True":
             welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
-            
+
 menu = """
 1 = Encryptor
 2 = Decryptor
@@ -130,12 +130,13 @@ if chooseOption == "3":
     """
         print(settingsMenu)
 
-        chooseSetting = input("Which setting would you like to change(0)?: ")
+        chooseSetting = input(
+            "Which setting would you like to change(0/1/2)?: ")
 
         if chooseSetting.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
             sys.exit()
-        
+
         if chooseSetting == "0":
             new_welcomeMessage = input("New welcome message: ")
 
@@ -154,10 +155,11 @@ if chooseOption == "3":
         0 = Turn on
         1 = Turn off
         """
-            
+
             print(figletWelcome)
-            figletOption = input("Which option would you like to choose(0/1)?: ")
-            
+            figletOption = input(
+                "Which option would you like to choose(0/1)?: ")
+
             if figletOption.lower() == "back":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
@@ -170,7 +172,7 @@ if chooseOption == "3":
                     input("Press any key to restart...")
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
-            
+
             if figletOption == "1":
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("False".encode())
