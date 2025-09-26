@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+import pyfiglet
 from cryptography.fernet import Fernet
 
 if os.path.isfile("welcome_message.conf"):
@@ -11,7 +12,12 @@ else:
     ===============WELCOME===============
 
     """
-
+if os.path.exists("figlet.conf"):
+    with open("figlet.conf", "rb") as figlet_configFile:
+        figlet_config = figlet_configFile.read().decode()
+        if figlet_config == "True":
+            welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
+            
 menu = """
 1 = Encryptor
 2 = Decryptor
@@ -119,8 +125,8 @@ if chooseOption == "3":
     ===============SETTINGS===============
 
     0 = Change welcome message
-    SAVE = Save changes
-    BACK = Go back to main menu(UNSAVED CHANGES WILL BE LOST)
+    1 = Figlet welcome message
+    2 = Reset welcome message
     """
         print(settingsMenu)
 
@@ -129,19 +135,60 @@ if chooseOption == "3":
         if chooseSetting.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
             sys.exit()
-
+        
         if chooseSetting == "0":
             new_welcomeMessage = input("New welcome message: ")
 
-        if new_welcomeMessage.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
-
-        if chooseSetting.lower() == "save":
             with open("welcome_message.conf", "wb") as configFile:
                 configFile.write(new_welcomeMessage.encode())
 
-            print("Changes saved successfully!")
-            input("Press any key to restart...")
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
+
+        if chooseSetting == "1":
+            figletWelcome = """
+        ===============FIGLET===============
+
+        0 = Turn on
+        1 = Turn off
+        """
+            
+            print(figletWelcome)
+            figletOption = input("Which option would you like to choose(0/1)?: ")
+            
+            if figletOption.lower() == "back":
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
+
+            if figletOption == "0":
+                with open("figlet.conf", "wb") as figlet_configFile:
+                    figlet_configFile.write("True".encode())
+
+                    print("Changes saved successfully!")
+                    input("Press any key to restart...")
+                    subprocess.Popen([sys.executable] + sys.argv)
+                    sys.exit()
+            
+            if figletOption == "1":
+                with open("figlet.conf", "wb") as figlet_configFile:
+                    figlet_configFile.write("False".encode())
+
+                    print("Changes saved successfully!")
+                    input("Press any key to restart...")
+                    subprocess.Popen([sys.executable] + sys.argv)
+                    sys.exit()
+
+        if chooseSetting == "2":
+            if os.path.exists("welcome_message.conf"):
+                os.remove("welcome_message.conf")
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
+            else:
+                print("You haven't changed the welcome message yet!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
