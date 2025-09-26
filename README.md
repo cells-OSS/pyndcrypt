@@ -28,6 +28,10 @@ First of all, make sure you have the file you want to decrypt in the same folder
 
 Change welcome message (0) = This will allow you to change the message that pops up each time you run the script. Just choose the setting and then type in whatever you want. This will create a config file in the same directory as the script and save the setting there. Deleting this file will reset the welcome message to default.
 
+Figlet welcome message (1) = This will turn on or off the figlet-style welcome message font. Once turned on (turned off by default) it will create a figlet.conf file that will say "True" inside of it.
+
+Reset welcome message (2) = This will reset the welcome message by deleting the welcome message configuration file.
+
 # THE HISTORY
 
 This script is a merged version of https://github.com/cells-OSS/pyncrypt and https://github.com/cells-OSS/pydcrypt. The projects pyncrypt and pydcrypt are no longer going to get updated and possibly going to get archived. This script will keep on receiving updates.
