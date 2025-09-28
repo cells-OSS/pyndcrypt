@@ -14,6 +14,10 @@ Credits to him, this script at core has the code from NetworkChuck. It's just a 
 # PREREQUISITES
 Python (https://www.python.org/)
 
+pyfiglet (macOS/Linux: pip3 install pyfiglet, Windows: pip install pyfiglet)
+
+requests (macOS/Linux: pip3 install requests, Windows: pip install pyfiglet)
+
 # HOW TO USE?
 
 -----ENCRYPTION (option 1)-----
