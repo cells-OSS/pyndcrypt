@@ -29,7 +29,7 @@ def is_update_available(current_version):
 def download_latest_script():
     latest_version = get_latest_release_tag()
     filename = f"pyndcrypt-v{latest_version}.py"
-    url = "https://raw.githubusercontent.com/cells-OSS/pyndcrypt/main/calc.py"
+    url = "https://raw.githubusercontent.com/cells-OSS/pyndcrypt/main/pyndcrypt.py"
     response = requests.get(url)
     lines = response.text.splitlines()
     with open(filename, "w", encoding="utf-8") as f:
