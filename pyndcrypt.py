@@ -173,21 +173,21 @@ if chooseOption == "3":
         settingsMenu = """
     ===============SETTINGS===============
 
-    0 = Change welcome message
-    1 = Figlet welcome message
-    2 = Reset welcome message
-    3 = Change auto-update settings
+    1 = Change welcome message
+    2 = Figlet welcome message
+    3 = Reset welcome message
+    4 = Change auto-update settings
     """
         print(settingsMenu)
 
         chooseSetting = input(
-            "Which setting would you like to change(0/1/2)?: ")
+            "Which setting would you like to change(1/2/3/4)?: ")
 
         if chooseSetting.lower() == "back":
             subprocess.Popen([sys.executable] + sys.argv)
             sys.exit()
 
-        if chooseSetting == "0":
+        if chooseSetting == "1":
             new_welcomeMessage = input("New welcome message: ")
 
             with open("welcome_message.conf", "wb") as configFile:
@@ -198,23 +198,23 @@ if chooseOption == "3":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
 
-        if chooseSetting == "1":
+        if chooseSetting == "2":
             figletWelcome = """
         ===============FIGLET===============
 
-        0 = Turn on
-        1 = Turn off
+        1 = Turn on
+        2 = Turn off
         """
 
             print(figletWelcome)
             figletOption = input(
-                "Which option would you like to choose(0/1)?: ")
+                "Which option would you like to choose(1/2)?: ")
 
             if figletOption.lower() == "back":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
 
-            if figletOption == "0":
+            if figletOption == "1":
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("True".encode())
 
@@ -223,7 +223,7 @@ if chooseOption == "3":
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
 
-            if figletOption == "1":
+            if figletOption == "2":
                 with open("figlet.conf", "wb") as figlet_configFile:
                     figlet_configFile.write("False".encode())
 
@@ -232,7 +232,7 @@ if chooseOption == "3":
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
 
-        if chooseSetting == "2":
+        if chooseSetting == "3":
             if os.path.exists("welcome_message.conf"):
                 os.remove("welcome_message.conf")
                 print("Changes saved successfully!")
@@ -245,23 +245,23 @@ if chooseOption == "3":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
 
-        if chooseSetting == "3":
+        if chooseSetting == "4":
             aUpdateMenu = """
     ===============AUTO-UPDATE===============
 
-    0 = Turn on
-    1 = Turn off
+    1 = Turn on
+    2 = Turn off
     """
 
             print(aUpdateMenu)
             aUpdateOption = input(
-                "Which option would you like to choose(0/1)?: ")
+                "Which option would you like to choose(1/2)?: ")
 
             if aUpdateOption.lower() == "back":
                 subprocess.Popen([sys.executable] + sys.argv)
                 sys.exit()
 
-            if aUpdateOption == "0":
+            if aUpdateOption == "1":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
                     auto_update_configFile.write("True".encode())
 
@@ -270,7 +270,7 @@ if chooseOption == "3":
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
 
-            if aUpdateOption == "1":
+            if aUpdateOption == "2":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
                     auto_update_configFile.write("False".encode())
 
