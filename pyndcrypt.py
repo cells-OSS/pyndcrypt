@@ -11,7 +11,7 @@ __version__ = "v1.4"
 
 def get_latest_release_tag():
     try:
-        url = "https://api.github.com/repos/cells-OSS/pyculator/releases/latest"
+        url = "https://api.github.com/repos/cells-OSS/pyndcrypt/releases/latest"
         response = requests.get(url, timeout=5)
         response.raise_for_status()
         data = response.json()
@@ -28,8 +28,8 @@ def is_update_available(current_version):
 
 def download_latest_script():
     latest_version = get_latest_release_tag()
-    filename = f"pyculator-v{latest_version}.py"
-    url = "https://raw.githubusercontent.com/cells-OSS/pyculator/main/calc.py"
+    filename = f"pyndcrypt-v{latest_version}.py"
+    url = "https://raw.githubusercontent.com/cells-OSS/pyndcrypt/main/calc.py"
     response = requests.get(url)
     lines = response.text.splitlines()
     with open(filename, "w", encoding="utf-8") as f:
