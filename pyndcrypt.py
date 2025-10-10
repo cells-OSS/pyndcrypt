@@ -6,7 +6,7 @@ import requests
 from cryptography.fernet import Fernet
 from packaging import version
 
-__version__ = "v1.5"
+__version__ = "v1.6"
 
 
 def get_latest_release_tag():
@@ -84,8 +84,7 @@ if chooseOption == "1":
         file_input = input("Which file(s) do you want to encrypt: ")
 
         if file_input.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         files = [f.strip() for f in file_input.split(',') if f.strip()]
 
@@ -119,8 +118,7 @@ if chooseOption == "1":
             print("Encryption canceled.")
 
         input("Press any key to restart...")
-        subprocess.Popen([sys.executable] + sys.argv)
-        sys.exit()
+        os.execv(sys.executable, [sys.executable] + sys.argv)
 
 if chooseOption == "2":
     while True:
@@ -130,8 +128,7 @@ if chooseOption == "2":
         for file in os.listdir():
 
             if file_input.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             files = [f.strip() for f in file_input.split(',') if f.strip()]
 
@@ -146,8 +143,7 @@ if chooseOption == "2":
         decryptionKey = input("Enter the name of the decryption key: ")
 
         if decryptionKey.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         with open(decryptionKey, "rb") as decryption_key:
             secretkey = decryption_key.read()
@@ -164,8 +160,7 @@ if chooseOption == "2":
         print("Your file has been decrypted!")
 
         input("Press any key to restart...")
-        subprocess.Popen([sys.executable] + sys.argv)
-        sys.exit()
+        os.execv(sys.executable, [sys.executable] + sys.argv)
 
 if chooseOption == "3":
     while True:
@@ -184,8 +179,7 @@ if chooseOption == "3":
             "Which setting would you like to change(1/2/3/4)?: ")
 
         if chooseSetting.lower() == "back":
-            subprocess.Popen([sys.executable] + sys.argv)
-            sys.exit()
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "1":
             new_welcomeMessage = input("New welcome message: ")
@@ -195,8 +189,7 @@ if chooseOption == "3":
 
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "2":
             figletWelcome = """
@@ -211,8 +204,7 @@ if chooseOption == "3":
                 "Which option would you like to choose(1/2)?: ")
 
             if figletOption.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "1":
                 with open("figlet.conf", "wb") as figlet_configFile:
@@ -220,8 +212,7 @@ if chooseOption == "3":
 
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "2":
                 with open("figlet.conf", "wb") as figlet_configFile:
@@ -237,13 +228,11 @@ if chooseOption == "3":
                 os.remove("welcome_message.conf")
                 print("Changes saved successfully!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
             else:
                 print("You haven't changed the welcome message yet!")
                 input("Press any key to restart...")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "4":
             aUpdateMenu = """
@@ -258,8 +247,7 @@ if chooseOption == "3":
                 "Which option would you like to choose(1/2)?: ")
 
             if aUpdateOption.lower() == "back":
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if aUpdateOption == "1":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
@@ -267,8 +255,7 @@ if chooseOption == "3":
 
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if aUpdateOption == "2":
                 with open("auto_update.conf", "wb") as auto_update_configFile:
@@ -276,5 +263,4 @@ if chooseOption == "3":
 
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
