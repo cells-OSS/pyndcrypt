@@ -12,11 +12,13 @@ This script has been inspired by NetworkChuck: https://www.youtube.com/watch?v=U
 Credits to him, this script at core has the code from NetworkChuck. It's just a fun project I wanted to try, he on his video made a "ransomware", but i decided to take the code and make it a encryption/decryption script.
 
 # PREREQUISITES
-Python (https://www.python.org/)
+[Python](https://www.python.org/)
 
-pyfiglet (macOS/Linux: pip3 install pyfiglet, Windows: pip install pyfiglet)
+[pyfiglet](https://pypi.org/project/pyfiglet/)
 
-requests (macOS/Linux: pip3 install requests, Windows: pip install pyfiglet)
+[requests](https://pypi.org/project/requests/)
+
+[cryptography](https://pypi.org/project/cryptography/)
 
 # HOW TO USE?
 
@@ -38,13 +40,11 @@ Reset welcome message (2) = This will reset the welcome message by deleting the 
 
 # THE HISTORY
 
-This script is a merged version of https://github.com/cells-OSS/pyncrypt and https://github.com/cells-OSS/pydcrypt. The projects pyncrypt and pydcrypt are no longer going to get updated and possibly going to get archived. This script will keep on receiving updates.
-
-cryptography (Windows = pip install cryptography, MacOS/Linux = pip3 install cryptography)
+This script is a merged version of 2 seperate scripts called pyncrypt and pyndcrypt. The projects pyncrypt and pydcrypt are no longer going to get updated and they are currently privately archived. This script will keep on receiving updates.
 
 # Addressing the False Positives.
 Here is a virustotal report as of 9/19/2025: https://www.virustotal.com/gui/file/0db857c225c2c0694775d277083387ce87a3f16ce71f03ac9efefe2da5ffe354?nocache=1
 
-You can see here that only 2 vendors flag it as malicious one of which is the Windows Defender.
-I have looked into the code with VSCode without trusting the window and seems like the issue is at the 3rd line, which is "from cryptography.fernet import Fernet"
-this line just imports fernet from the library cryptography, which is an encryption algorithm/method that this script uses to encrypt/decrypt the files. Malicious actors can also use this for a ransomware. We recommend excluding this script from Windows Defender.
+You can see here that some vendors flag it as malicious one of which is the Windows Defender.
+I have looked into the code with VSCode without trusting the window and seems like the issue is at one of the imports, which is "from cryptography.fernet import Fernet"
+this line just imports fernet from the library cryptography, which is an encryption algorithm/method that this script uses to encrypt/decrypt the files. Malicious actors can also use this for a ransomware. We recommend excluding this script from Windows Defender. If you have any concerns about the safety of this script, it's completely open source meaning you or anyone else can check the code for malwares at any time.
