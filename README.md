@@ -1,5 +1,5 @@
 # pyndcrypt
-A simple CLI file encryption/decryption script made with Python.
+A simple CLI file encryption/decryption script written in Python.
 
 This script will either encrypt or decrypt the files that you choose.
 
