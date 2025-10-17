@@ -223,6 +223,11 @@ if chooseOption == "3":
                     subprocess.Popen([sys.executable] + sys.argv)
                     sys.exit()
 
+            else:
+                print("Invalid option.")
+                input("Press Enter to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
+
         if chooseSetting == "3":
             if os.path.exists("welcome_message.conf"):
                 os.remove("welcome_message.conf")
@@ -233,6 +238,11 @@ if chooseOption == "3":
                 print("You haven't changed the welcome message yet!")
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
+
+        else:
+            print("Invalid option.")
+            input("Press Enter to restart...")
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "4":
             aUpdateMenu = """
@@ -264,3 +274,13 @@ if chooseOption == "3":
                     print("Changes saved successfully!")
                     input("Press any key to restart...")
                     os.execv(sys.executable, [sys.executable] + sys.argv)
+            
+            else:
+                print("Invalid option.")
+                input("Press Enter to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
+
+else:
+    print("Invalid option.")
+    input("Press Enter to restart...")
+    os.execv(sys.executable, [sys.executable] + sys.argv)
