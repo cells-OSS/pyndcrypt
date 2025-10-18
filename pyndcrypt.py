@@ -44,8 +44,12 @@ def download_latest_script():
     exit()
 
 
-if os.path.isfile("welcome_message.conf"):
-    with open("welcome_message.conf", "rb") as configFile:
+config_dir = os.path.expanduser("~/.config/pyndcrypt")
+os.makedirs(config_dir, exist_ok=True)
+config_path = os.path.join(config_dir, "welcome_message.conf")
+
+if os.path.isfile(config_path):
+    with open(config_path, "rb") as configFile:
         welcomeMessage = configFile.read().decode()
 else:
     welcomeMessage = """
@@ -184,12 +188,15 @@ if chooseOption == "3":
         if chooseSetting == "1":
             new_welcomeMessage = input("New welcome message: ")
 
-            with open("welcome_message.conf", "wb") as configFile:
+            
+            config_path = os.path.join(config_dir, "welcome_message.conf")
+
+            with open(config_path, "wb") as configFile:
                 configFile.write(new_welcomeMessage.encode())
 
-                print("Changes saved successfully!")
-                input("Press any key to restart...")
-                os.execv(sys.executable, [sys.executable] + sys.argv)
+            print("Changes saved successfully!")
+            input("Press any key to restart...")
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "2":
             figletWelcome = """
