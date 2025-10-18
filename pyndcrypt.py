@@ -51,7 +51,8 @@ else:
 os.makedirs(config_dir, exist_ok=True)
 
 welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
-
+figlet_config_path = os.path.join(config_dir, "figlet.conf")
+auto_update_config_path = os.path.join(config_dir, "auto_update.conf")
 
 
 if os.path.isfile(welcomeMessage_config_path):
@@ -62,15 +63,15 @@ else:
     ===============WELCOME===============
 
     """
-if os.path.exists("figlet.conf"):
-    with open("figlet.conf", "rb") as figlet_configFile:
+if os.path.exists(figlet_config_path):
+    with open(figlet_config_path, "rb") as figlet_configFile:
         figlet_config = figlet_configFile.read().decode()
         if figlet_config == "True":
             welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
 
 
-if os.path.exists("auto_update.conf"):
-    with open("auto_update.conf", "rb") as auto_update_configFile:
+if os.path.exists(auto_update_config_path):
+    with open(auto_update_config_path, "rb") as auto_update_configFile:
         auto_update_config = auto_update_configFile.read().decode()
         if auto_update_config == "True":
             if is_update_available(__version__):
