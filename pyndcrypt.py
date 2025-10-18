@@ -47,9 +47,9 @@ if os.name == "nt":
     config_dir = os.path.join(os.getenv("APPDATA"), "pyndcrypt")
 else:
     config_dir = os.path.expanduser("~/.config/pyndcrypt")
-    
+
 os.makedirs(config_dir, exist_ok=True)
-config_path = os.path.join(config_dir, "welcome_message.conf")
+
 
 if os.path.isfile(config_path):
     with open(config_path, "rb") as configFile:
@@ -191,7 +191,6 @@ if chooseOption == "3":
         if chooseSetting == "1":
             new_welcomeMessage = input("New welcome message: ")
 
-            
             config_path = os.path.join(config_dir, "welcome_message.conf")
 
             with open(config_path, "wb") as configFile:
@@ -210,28 +209,32 @@ if chooseOption == "3":
         """
 
             print(figletWelcome)
-            figletOption = input(
-                "Which option would you like to choose(1/2)?: ")
+            figletOption = input("Which option would you like to choose(1/2)?: ")
 
             if figletOption.lower() == "back":
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "1":
-                with open("figlet.conf", "wb") as figlet_configFile:
+
+                config_path = os.path.join(config_dir, "figlet.conf")
+
+                with open(config_path, "wb") as figlet_configFile:
                     figlet_configFile.write("True".encode())
 
-                    print("Changes saved successfully!")
-                    input("Press any key to restart...")
-                    os.execv(sys.executable, [sys.executable] + sys.argv)
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                os.execv(sys.executable, [sys.executable] + sys.argv)
 
             if figletOption == "2":
-                with open("figlet.conf", "wb") as figlet_configFile:
-                    figlet_configFile.write("False".encode())
+                config_path = os.path.join(config_dir, "figlet.conf")
+                
+                if os.path.exists(config_path):
+                    os.remove(config_path)
 
-                    print("Changes saved successfully!")
-                    input("Press any key to restart...")
-                    subprocess.Popen([sys.executable] + sys.argv)
-                    sys.exit()
+                print("Changes saved successfully!")
+                input("Press any key to restart...")
+                subprocess.Popen([sys.executable] + sys.argv)
+                sys.exit()
 
             else:
                 print("Invalid option.")
