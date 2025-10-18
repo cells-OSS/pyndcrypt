@@ -50,9 +50,12 @@ else:
 
 os.makedirs(config_dir, exist_ok=True)
 
+welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
 
-if os.path.isfile(config_path):
-    with open(config_path, "rb") as configFile:
+
+
+if os.path.isfile(welcomeMessage_config_path):
+    with open(welcomeMessage_config_path, "rb") as configFile:
         welcomeMessage = configFile.read().decode()
 else:
     welcomeMessage = """
