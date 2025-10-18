@@ -43,8 +43,11 @@ def download_latest_script():
     input("Press Enter to exit...")
     exit()
 
-
-config_dir = os.path.expanduser("~/.config/pyndcrypt")
+if os.name == "nt":
+    config_dir = os.path.join(os.getenv("APPDATA"), "pyndcrypt")
+else:
+    config_dir = os.path.expanduser("~/.config/pyndcrypt")
+    
 os.makedirs(config_dir, exist_ok=True)
 config_path = os.path.join(config_dir, "welcome_message.conf")
 
