@@ -250,10 +250,6 @@ if chooseOption == "3":
                 input("Press any key to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
 
-        else:
-            print("Invalid option.")
-            input("Press Enter to restart...")
-            os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "4":
             aUpdateMenu = """
@@ -292,7 +288,10 @@ if chooseOption == "3":
                 print("Invalid option.")
                 input("Press Enter to restart...")
                 os.execv(sys.executable, [sys.executable] + sys.argv)
-
+        else:
+            print("Invalid option.")
+            input("Press Enter to restart...")
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 else:
     print("Invalid option.")
     input("Press Enter to restart...")
