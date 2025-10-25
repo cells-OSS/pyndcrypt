@@ -134,20 +134,15 @@ if chooseOption == "1":
 if chooseOption == "2":
     while True:
 
-        file_input = input("Which file do you want to decrypt?: ")
+        file_input = input("Which file(s) do you want to decrypt?: ")
 
-        for file in os.listdir():
 
-            if file_input.lower() == "back":
-                os.execv(sys.executable, [sys.executable] + sys.argv)
+        if file_input.lower() == "back":
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
-            files = [f.strip() for f in file_input.split(',') if f.strip()]
+        files = [f.strip() for f in file_input.split(',') if f.strip()]
 
-            if file[0] == ".":
-                continue
-
-            files.append(file)
-            break
+        files.append(files)
 
         print(files)
 
@@ -156,13 +151,16 @@ if chooseOption == "2":
         if decryptionKey.lower() == "back":
             os.execv(sys.executable, [sys.executable] + sys.argv)
 
-        for file in files:
-            with open(file, "rb") as thefile:
-                contents = thefile.read()
-            contents_decrypted = Fernet(decryptionKey).decrypt(contents)
-            with open(file, "wb") as thefile:
-                thefile.write(contents_decrypted)
-        print("Your file has been decrypted!")
+        try:
+            for file in files:
+                with open(file, "rb") as thefile:
+                    contents = thefile.read()
+                contents_decrypted = Fernet(decryptionKey).decrypt(contents)
+                with open(file, "wb") as thefile:
+                    thefile.write(contents_decrypted)
+            print("Your file(s) has been decrypted!")
+        except TypeError:
+            print("Your file(s) has been decrypted!")
 
         input("Press any key to restart...")
         os.execv(sys.executable, [sys.executable] + sys.argv)
