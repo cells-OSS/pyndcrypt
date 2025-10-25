@@ -151,21 +151,15 @@ if chooseOption == "2":
 
         print(files)
 
-        decryptionKey = input("Enter the name of the decryption key: ")
+        decryptionKey = input("Enter the decryption key: ")
 
         if decryptionKey.lower() == "back":
             os.execv(sys.executable, [sys.executable] + sys.argv)
 
-        with open(decryptionKey, "rb") as decryption_key:
-            secretkey = decryption_key.read()
-
-        keyInput = input(
-            "Press any key after placing the key in the current directory...")
-
         for file in files:
             with open(file, "rb") as thefile:
                 contents = thefile.read()
-            contents_decrypted = Fernet(secretkey).decrypt(contents)
+            contents_decrypted = Fernet(decryptionKey).decrypt(contents)
             with open(file, "wb") as thefile:
                 thefile.write(contents_decrypted)
         print("Your file has been decrypted!")
