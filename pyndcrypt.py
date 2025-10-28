@@ -114,10 +114,7 @@ if chooseOption == "1":
 
         if confirmationMessage.lower() == "y":
             keyOption = input("Would you like to generate a key(Y/n)?: ")
-            if keyOption.lower() == "y":
-                key = Fernet.generate_key()
-                keyName = input("The name of the key: ")
-            else:
+            if keyOption.lower() == "n":
                 user_key = input("Enter your custom key (passphrase or base64 key): ").strip()
                 try:
                     decoded = base64.urlsafe_b64decode(user_key)
@@ -127,6 +124,10 @@ if chooseOption == "1":
                         raise ValueError("not 32 bytes")
                 except Exception:
                     key = base64.urlsafe_b64encode(hashlib.sha256(user_key.encode()).digest())
+                keyName = input("The name of the key: ")
+            
+            else:
+                key = Fernet.generate_key()
                 keyName = input("The name of the key: ")
 
             with open(keyName + ".txt", "wb") as decryption_key:
