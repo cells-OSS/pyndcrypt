@@ -1,5 +1,7 @@
 import os
 import sys
+import base64
+import hashlib
 import subprocess
 import pyfiglet
 import requests
@@ -111,8 +113,21 @@ if chooseOption == "1":
             "The file(s) shown above will be encrypted, are you sure(y/N)?: ")
 
         if confirmationMessage.lower() == "y":
-            key = Fernet.generate_key()
-            keyName = input("The name of the key: ")
+            keyOption = input("Would you like to generate a key(Y/n)?: ")
+            if keyOption.lower() == "y":
+                key = Fernet.generate_key()
+                keyName = input("The name of the key: ")
+            else:
+                user_key = input("Enter your custom key (passphrase or base64 key): ").strip()
+                try:
+                    decoded = base64.urlsafe_b64decode(user_key)
+                    if len(decoded) == 32:
+                        key = user_key.encode()
+                    else:
+                        raise ValueError("not 32 bytes")
+                except Exception:
+                    key = base64.urlsafe_b64encode(hashlib.sha256(user_key.encode()).digest())
+                keyName = input("The name of the key: ")
 
             with open(keyName + ".txt", "wb") as decryption_key:
                 decryption_key.write(key)
@@ -142,25 +157,31 @@ if chooseOption == "2":
 
         files = [f.strip() for f in file_input.split(',') if f.strip()]
 
-        files.append(files)
-
         print(files)
 
-        decryptionKey = input("Enter the decryption key: ")
-
-        if decryptionKey.lower() == "back":
+        decryption_input = input("Enter the decryption key (paste key or passphrase): ").strip()
+        if decryption_input.lower() == "back":
             os.execv(sys.executable, [sys.executable] + sys.argv)
+
+        try:
+            decoded = base64.urlsafe_b64decode(decryption_input)
+            if len(decoded) == 32:
+                key = decryption_input.encode()
+            else:
+                raise ValueError("not 32 bytes")
+        except Exception:
+            key = base64.urlsafe_b64encode(hashlib.sha256(decryption_input.encode()).digest())
 
         try:
             for file in files:
                 with open(file, "rb") as thefile:
                     contents = thefile.read()
-                contents_decrypted = Fernet(decryptionKey).decrypt(contents)
+                contents_decrypted = Fernet(key).decrypt(contents)
                 with open(file, "wb") as thefile:
                     thefile.write(contents_decrypted)
-            print("Your file(s) has been decrypted!")
-        except TypeError:
-            print("Your file(s) has been decrypted!")
+            print("Your file(s) have been decrypted!")
+        except Exception as e:
+            print("Decryption failed:", e)
 
         input("Press any key to restart...")
         os.execv(sys.executable, [sys.executable] + sys.argv)
