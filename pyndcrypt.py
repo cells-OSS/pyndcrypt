@@ -8,7 +8,7 @@ import requests
 from cryptography.fernet import Fernet
 from packaging import version
 
-__version__ = "v1.9"
+__version__ = "v2.0"
 
 
 def get_latest_release_tag():
