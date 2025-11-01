@@ -100,13 +100,13 @@ if config["figlet_welcome"]:
     welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
 
 
-if os.path.exists(auto_update_config_path):
-    with open(auto_update_config_path, "rb") as auto_update_configFile:
-        auto_update_config = auto_update_configFile.read().decode()
-        if auto_update_config == "True":
-            if is_update_available(__version__):
-                print("New version available!")
-                download_latest_script()
+if config["auto_updates"]:
+    if is_update_available(__version__):
+        print("A new version of Pyculator is available!")
+        user_input = input(
+            "Would you like to download the latest version? (y/n): ").strip().lower()
+        if user_input == "y":
+            download_latest_script()
 
 menu = """
 1 = Encryptor
