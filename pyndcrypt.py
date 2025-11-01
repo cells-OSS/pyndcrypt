@@ -1,4 +1,6 @@
 import os
+from logging import config
+import json
 import sys
 import base64
 import hashlib
@@ -52,10 +54,39 @@ else:
 
 os.makedirs(config_dir, exist_ok=True)
 
-welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
-figlet_config_path = os.path.join(config_dir, "figlet.conf")
-auto_update_config_path = os.path.join(config_dir, "auto_update.conf")
+config_path = os.path.join(config_dir, "config.json")
 
+def load_config():
+    path = os.path.join(config_dir, "config.json")
+    if not os.path.exists(path):
+        default = {"auto_updates": True, "figlet_welcome": False}
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(default, f, indent=4)
+        return default
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def save_config(config):
+    with open(os.path.join(config_dir, "config.json"), "w", encoding="utf-8") as f:
+        json.dump(config, f, indent=4)
+
+def toggle_auto_updates():
+    config = load_config()
+    
+    config["auto_updates"] = not config.get("auto_updates", True)
+    
+    save_config(config)
+    print(f"Auto updates are now {'ON' if config['auto_updates'] else 'OFF'}")
+
+def toggle_figlet():
+    config = load_config()
+    
+    config["figlet_welcome"] = not config.get("figlet_welcome", False)
+    
+    save_config(config)
+    print(f"Figlet welcome message is now {'ON' if config['figlet_welcome'] else 'OFF'}")
+
+welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
 
 if os.path.isfile(welcomeMessage_config_path):
     with open(welcomeMessage_config_path, "rb") as configFile:
