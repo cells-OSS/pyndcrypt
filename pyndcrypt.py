@@ -96,11 +96,8 @@ else:
     ===============WELCOME===============
 
     """
-if os.path.exists(figlet_config_path):
-    with open(figlet_config_path, "rb") as figlet_configFile:
-        figlet_config = figlet_configFile.read().decode()
-        if figlet_config == "True":
-            welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
+if config["figlet_welcome"]:
+    welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
 
 
 if os.path.exists(auto_update_config_path):
