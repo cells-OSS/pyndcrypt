@@ -97,6 +97,7 @@ def toggle_figlet():
 
 welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
 
+# If the welcome message has been changed, uses the custom welcome message text. Otherwise, uses the default welcome message.
 if os.path.isfile(welcomeMessage_config_path):
     with open(welcomeMessage_config_path, "rb") as configFile:
         welcomeMessage = configFile.read().decode()
@@ -105,10 +106,12 @@ else:
     ===============WELCOME===============
 
     """
+
+# Figlitifies the welcome message if figlet welcome message is turned on.
 if config["figlet_welcome"]:
     welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
 
-
+# Checks for updates if auto-updates are enabled.
 if config["auto_updates"]:
     if is_update_available(__version__):
         print("A new version of Pyculator is available!")
