@@ -141,6 +141,7 @@ if chooseOption == "1":
 
         files = [f.strip() for f in file_input.split(',') if f.strip()]
 
+        # Checks if the inputted files exists.
         for file in files:
             if not os.path.isfile(file):
                 print(f"File(s) not found: {file}")
