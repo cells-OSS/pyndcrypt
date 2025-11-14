@@ -13,6 +13,7 @@ from packaging import version
 __version__ = "v2.1"
 
 
+# Looks up what the latest release tag (e.g. v2.1) on GitHub is.
 def get_latest_release_tag():
     try:
         url = "https://api.github.com/repos/cells-OSS/pyndcrypt/releases/latest"
@@ -24,12 +25,12 @@ def get_latest_release_tag():
         print("Failed to check for updates:", e)
         return __version__.lstrip("v")
 
-
+# Compares the current version with the latest version available on GitHub.
 def is_update_available(current_version):
     latest = get_latest_release_tag()
     return version.parse(latest) > version.parse(current_version.lstrip("v"))
 
-
+# Downloads the latest version of the script from GitHub.
 def download_latest_script():
     latest_version = get_latest_release_tag()
     filename = f"pyndcrypt-v{latest_version}.py"
@@ -47,15 +48,20 @@ def download_latest_script():
     input("Press Enter to exit...")
     exit()
 
+# Sets the config directory based on the operating system.
 if os.name == "nt":
     config_dir = os.path.join(os.getenv("APPDATA"), "pyndcrypt")
 else:
     config_dir = os.path.expanduser("~/.config/pyndcrypt")
 
+
+# Creates the config directory if it doesn't exist.
 os.makedirs(config_dir, exist_ok=True)
 
+# Sets the config file path.
 config_path = os.path.join(config_dir, "config.json")
 
+# Loads the config file or creates a default one if it doesn't exist.
 def load_config():
     path = os.path.join(config_dir, "config.json")
     if not os.path.exists(path):
@@ -66,10 +72,12 @@ def load_config():
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+# Saves the config file.
 def save_config(config):
     with open(os.path.join(config_dir, "config.json"), "w", encoding="utf-8") as f:
         json.dump(config, f, indent=4)
 
+# Toggles the auto-update setting.
 def toggle_auto_updates():
     config = load_config()
     
@@ -78,6 +86,7 @@ def toggle_auto_updates():
     save_config(config)
     print(f"Auto updates are now {'ON' if config['auto_updates'] else 'OFF'}")
 
+# Toggles the figlet welcome message setting.
 def toggle_figlet():
     config = load_config()
     
