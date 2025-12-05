@@ -95,6 +95,17 @@ def toggle_figlet():
     save_config(config)
     print(f"Figlet welcome message is now {'ON' if config['figlet_welcome'] else 'OFF'}")
 
+def install_packages(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+required_packages = ["cryptography", "requests", "packaging", "pyfiglet"]
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"Installing required package(s) {package}...")
+        install_packages(package)
+
 # Loads the default config file.
 config = load_config()
 
