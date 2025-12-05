@@ -95,6 +95,9 @@ def toggle_figlet():
     save_config(config)
     print(f"Figlet welcome message is now {'ON' if config['figlet_welcome'] else 'OFF'}")
 
+# Loads the default config file.
+config = load_config()
+
 welcomeMessage_config_path = os.path.join(config_dir, "welcome_message.conf")
 
 # If the welcome message has been changed, uses the custom welcome message text. Otherwise, uses the default welcome message.
@@ -107,7 +110,7 @@ else:
 
     """
 
-# Figlitifies the welcome message if figlet welcome message is turned on.
+# Figletifies the welcome message if figlet welcome message is turned on.
 if config["figlet_welcome"]:
     welcomeMessage = pyfiglet.figlet_format(welcomeMessage)
 
