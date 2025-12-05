@@ -7,10 +7,10 @@ import hashlib
 import subprocess
 from packaging import version
 
-__version__ = "v2.1"
+__version__ = "v2.2"
 
 
-# Looks up what the latest release tag (e.g. v2.1) on GitHub is.
+# Looks up what the latest release tag (e.g. v2.2) on GitHub is.
 def get_latest_release_tag():
     try:
         url = "https://api.github.com/repos/cells-OSS/pyndcrypt/releases/latest"
