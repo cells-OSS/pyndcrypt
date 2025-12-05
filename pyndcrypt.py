@@ -5,9 +5,6 @@ import sys
 import base64
 import hashlib
 import subprocess
-import pyfiglet
-import requests
-from cryptography.fernet import Fernet
 from packaging import version
 
 __version__ = "v2.1"
@@ -96,7 +93,10 @@ def toggle_figlet():
     print(f"Figlet welcome message is now {'ON' if config['figlet_welcome'] else 'OFF'}")
 
 def install_packages(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    if os.name == 'nt':
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    else:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--break-system-packages"])
 
 required_packages = ["cryptography", "requests", "packaging", "pyfiglet"]
 for package in required_packages:
@@ -105,6 +105,10 @@ for package in required_packages:
     except ImportError:
         print(f"Installing required package(s) {package}...")
         install_packages(package)
+
+import pyfiglet
+import requests
+from cryptography.fernet import Fernet
 
 # Loads the default config file.
 config = load_config()
