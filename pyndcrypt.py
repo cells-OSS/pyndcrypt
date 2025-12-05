@@ -145,11 +145,10 @@ if chooseOption == "1":
         files = [f.strip() for f in file_input.split(',') if f.strip()]
 
         # Checks if the inputted files exists.
-        for file in files:
-            if not os.path.isfile(file):
-                print(f"File(s) not found: {file}")
-                subprocess.Popen([sys.executable] + sys.argv)
-                sys.exit()
+        if not os.path.isfile(file_input):
+            print(f"File(s) not found: {file_input}")
+            subprocess.Popen([sys.executable] + sys.argv)
+            sys.exit()
 
         print(files)
 
