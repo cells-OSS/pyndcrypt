@@ -192,7 +192,6 @@ if chooseOption == "1":
                         raise ValueError("not 32 bytes")
                 except Exception:
                     key = base64.urlsafe_b64encode(hashlib.sha256(key.encode()).digest())
-                keyName = input("The name of the key: ")
                 
             for file in files:
                 with open(file, "rb") as thefile:
