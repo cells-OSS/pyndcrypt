@@ -157,26 +157,29 @@ if chooseOption == "1":
             "The file(s) shown above will be encrypted, are you sure(y/N)?: ")
 
         if confirmationMessage.lower() == "y":
-            keyOption = input("Would you like to generate a key(Y/n)?: ")
-            if keyOption.lower() == "n":
-                user_key = input("Enter your custom key (passphrase or base64 key): ").strip()
-                try:
-                    decoded = base64.urlsafe_b64decode(user_key)
-                    if len(decoded) == 32:
-                        key = user_key.encode()
-                    else:
-                        raise ValueError("not 32 bytes")
-                except Exception:
-                    key = base64.urlsafe_b64encode(hashlib.sha256(user_key.encode()).digest())
-                keyName = input("The name of the key: ")
+            key = input("Enter a password or type 'g' to generate one: ").strip()
+
+            if key.lower() == "back":
+                os.execv(sys.executable, [sys.executable] + sys.argv)
             
-            else:
+            if key.lower() == "g":
                 key = Fernet.generate_key()
                 keyName = input("The name of the key: ")
 
-            with open(keyName + ".txt", "wb") as decryption_key:
-                decryption_key.write(key)
+                with open(keyName + ".txt", "wb") as decryption_key:
+                    decryption_key.write(key)
 
+            else:
+                try:
+                    decoded = base64.urlsafe_b64decode(key)
+                    if len(decoded) == 32:
+                        key = key.encode()
+                    else:
+                        raise ValueError("not 32 bytes")
+                except Exception:
+                    key = base64.urlsafe_b64encode(hashlib.sha256(key.encode()).digest())
+                keyName = input("The name of the key: ")
+                
             for file in files:
                 with open(file, "rb") as thefile:
                     contents = thefile.read()
@@ -190,6 +193,8 @@ if chooseOption == "1":
 
         input("Press any key to restart...")
         os.execv(sys.executable, [sys.executable] + sys.argv)
+            
+                
 
 if chooseOption == "2":
     while True:
