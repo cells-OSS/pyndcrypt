@@ -14,14 +14,6 @@ Credits to him, this script at core has the code from NetworkChuck. It's just a 
 # PREREQUISITES
 [Python](https://www.python.org/)
 
-[pyfiglet](https://pypi.org/project/pyfiglet/)
-
-[requests](https://pypi.org/project/requests/)
-
-[cryptography](https://pypi.org/project/cryptography/)
-
-[packaging](https://pypi.org/project/packaging/)
-
 # HOW TO USE?
 
 -----ENCRYPTION (option 1)-----
