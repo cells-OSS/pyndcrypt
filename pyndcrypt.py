@@ -103,7 +103,7 @@ for package in required_packages:
     try:
         __import__(package)
     except ImportError:
-        print(f"Installing required package(s) {package}...")
+        print(f"Installing required package {package}...")
         install_packages(package)
 
 import pyfiglet
