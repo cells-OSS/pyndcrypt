@@ -14,6 +14,12 @@ Credits to him, this script at core has the code from NetworkChuck. It's just a 
 # PREREQUISITES
 [Python](https://www.python.org/)
 
+WARNING FOR LINUX USERS!
+Even though automatic prerequisite installation is supported, some Linux distributions may not include the pip packange manager by default (such as Arch Linux).
+If you want to use the automatic prerequisite installation, please consult your local package manager for the python package manager.
+
+If you prefer to manually install these python packages, please refer to [pip-packages.md](https://github.com/cells-OSS/pyndcrypt/blob/main/pip-packages.md)
+
 # HOW TO USE?
 
 -----ENCRYPTION (option 1)-----
