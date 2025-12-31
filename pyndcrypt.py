@@ -5,7 +5,6 @@ import sys
 import base64
 import hashlib
 import subprocess
-from packaging import version
 
 __version__ = "v2.2"
 
@@ -109,6 +108,7 @@ for package in required_packages:
 import pyfiglet
 import requests
 from cryptography.fernet import Fernet
+from packaging import version
 
 # Loads the default config file.
 config = load_config()
