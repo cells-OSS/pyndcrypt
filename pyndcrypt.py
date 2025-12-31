@@ -96,7 +96,7 @@ def install_packages(package):
     if os.name == 'nt':
         subprocess.check_call([sys.executable, "-m", "pip", "install", package])
     else:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package, "--break-system-packages"])
+        subprocess.check_call([sys.executable, "-m", "pip3", "install", package, "--break-system-packages"])
 
 required_packages = ["cryptography", "requests", "packaging", "pyfiglet"]
 for package in required_packages:
