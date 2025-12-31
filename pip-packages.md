@@ -1,4 +1,7 @@
 cryptography
+
 requests
+
 packaging
+
 pyfiglet
