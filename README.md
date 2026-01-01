@@ -25,11 +25,11 @@ If you prefer to manually install these python packages, please refer to [pip-pa
 
 -----ENCRYPTION (option 1)-----
 
-First of all, make sure you have the file you want to encrypt in the same folder as the script. Then run the script and choose the first option. Then type the name of the file(s) you want to encrypt(put a comma between the files if you want to encrypt more than one file at a time). It will ask you if you're sure you want to encrypt the file and if answered positively there will be a .txt file created with the name of "decryption_key.txt" and if you choose to encrypt more than one file at a time they will be sharing the same decryption key. Typing "back" at any moment will take you back to the welcome message.
+First of all, make sure you have the file you want to encrypt in the same folder as the script. Then run the script and choose the first option. Then type the name of the file(s) you want to encrypt (put a comma between the files if you want to encrypt more than one file at a time). It will ask you if you're sure you want to encrypt the file and if answered positively it will ask you if you want to create a strong passphrase or if you want to use your own password. Then the file that you chose to encrypt will be encrypted with the passphrase you provided or the program generated. if you choose to encrypt more than one file at a time they will share the same decryption key. If you choose to generate a passphrase it will ask you for a file name and then the generated key will be saved in a file with the name of your choosing. Typing "back" at any moment will take you back to the welcome message.
 
 -----DECRYPTION (option 2)-----
 
-First of all, make sure you have the file you want to decrypt in the same folder as the script. Then run the script and choose the second option. Then type the name of the file(s) you want to decrypt(put a comma between the files if you want to decrypt more than one file at a time). it will ask you to put the decryption key in the same directory of the script and it will ask for the name of the decryption key. After that it should decrypt the file(s) that you chose. Typing "back" at any moment will take you back to the welcome message.
+First of all, make sure you have the file you want to decrypt in the same folder as the script. Then run the script and choose the second option. Then type the name of the file(s) you want to decrypt (put a comma between the files if you want to decrypt more than one file at a time). It will ask you for the passphrase. After that it should decrypt the file(s) that you chose. Typing "back" at any moment will take you back to the welcome message.
 
 -----SETTINGS (option 3)-----
 
