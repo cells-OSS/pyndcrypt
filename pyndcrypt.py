@@ -121,8 +121,7 @@ if os.path.isfile(welcomeMessage_config_path):
         welcomeMessage = configFile.read().decode()
 else:
     welcomeMessage = """
-    ===============WELCOME===============
-
+===============WELCOME===============
     """
 
 # Figletifies the welcome message if figlet welcome message is turned on.
