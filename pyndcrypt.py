@@ -211,6 +211,7 @@ if chooseOption == "1":
 
 if chooseOption == "2":
     while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
 
         file_input = input("Which file(s) do you want to decrypt?: ")
 
