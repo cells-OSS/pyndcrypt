@@ -150,6 +150,7 @@ print(welcomeMessage, menu)
 chooseOption = input("Which option would you like to choose(1/2/3)?: ")
 
 if chooseOption == "1":
+    os.system('cls' if os.name == 'nt' else 'clear')
     while True:
         file_input = input("Which file(s) do you want to encrypt: ")
 
