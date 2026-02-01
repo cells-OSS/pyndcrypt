@@ -271,6 +271,7 @@ if chooseOption == "3":
             os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "1":
+            os.system('cls' if os.name == 'nt' else 'clear')
             new_welcomeMessage = input("New welcome message: ")
 
             config_path = os.path.join(config_dir, "welcome_message.conf")
