@@ -284,6 +284,7 @@ if chooseOption == "3":
             os.execv(sys.executable, [sys.executable] + sys.argv)
 
         if chooseSetting == "2":
+            os.system('cls' if os.name == 'nt' else 'clear')
             figletWelcome = """
         ===============FIGLET===============
 
