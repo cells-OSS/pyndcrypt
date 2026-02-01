@@ -318,6 +318,7 @@ if chooseOption == "3":
 
 
         if chooseSetting == "4":
+            os.system('cls' if os.name == 'nt' else 'clear')
             aUpdateMenu = """
     ===============AUTO-UPDATE===============
 
