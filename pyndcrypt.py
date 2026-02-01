@@ -252,6 +252,7 @@ if chooseOption == "2":
 
 if chooseOption == "3":
     while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
 
         settingsMenu = """
     ===============SETTINGS===============
